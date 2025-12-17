@@ -19,24 +19,38 @@
     display: grid;
     place-content: center;
     gap: 18px;
-    padding: 24px;
+  
+    /* Mobile-friendly constraints */
+    width: min(720px, 100%);
+    margin: 0 auto;
+    padding: max(24px, env(safe-area-inset-top)) 16px
+             max(24px, env(safe-area-inset-bottom));
     text-align: center;
   }
   
   h1 {
     margin: 0;
-    font-size: clamp(28px, 5vw, 44px);
+    font-size: clamp(24px, 6vw, 44px);
     letter-spacing: -0.02em;
   }
   
   .answer {
-    font-size: clamp(56px, 10vw, 110px);
+    font-size: clamp(42px, 12vw, 110px);
     font-weight: 800;
-    padding: 18px 28px;
+  
+    /* Prevent overflow on small screens */
+    width: 100%;
+    max-width: 520px;
+    box-sizing: border-box;
+  
+    padding: 16px 18px;
     border-radius: 18px;
     background: var(--card);
     display: inline-block;
-    min-width: 220px;
+  
+    /* Long text should wrap cleanly */
+    overflow-wrap: anywhere;
+    word-break: normal;
   }
   
   .answer.yes { outline: 3px solid rgba(80, 200, 120, 0.85); }
@@ -46,9 +60,20 @@
     font-size: 14px;
     color: var(--muted);
     line-height: 1.6;
+  
+    /* Improve readability on phones */
+    max-width: 520px;
+    margin: 0 auto;
   }
   
   .label {
     opacity: 0.9;
+  }
+  
+  /* Small-phone tuning */
+  @media (max-width: 380px) {
+    .wrap { gap: 14px; }
+    .answer { padding: 14px 14px; border-radius: 16px; }
+    .meta { font-size: 13px; }
   }
   
