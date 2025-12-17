@@ -24,7 +24,7 @@ function isThursday(date) {
   
     const yes = isThursday(now);
   
-    answerEl.textContent = yes ? "YES" : "NO";
+    answerEl.textContent = yes ? "YES!!" : "It's always Thursday in Aula Polifunzionale";
     answerEl.classList.toggle("yes", yes);
     answerEl.classList.toggle("no", !yes);
   
